@@ -8,12 +8,12 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const tag = slug?.[0] === 'All' ? null : slug?.[0];
+  const tag = slug?.[0] === 'All' ? undefined : slug?.[0];
   return {
-    title: `Notes ${tag}`,
+    title: tag ? `Notes ${tag} | NoteHub` : 'All Notes | Notehub',
     description: `${tag}`,
     openGraph: {
-        title: `Notes ${tag}`,
+        title: tag ? `Notes ${tag} | NoteHub` : 'All Notes | Notehub',
         description: `${tag}`,
         url: `https://08-zustand-omega-gold.vercel.app/notes/${tag ?? ""}`,
         images: [
