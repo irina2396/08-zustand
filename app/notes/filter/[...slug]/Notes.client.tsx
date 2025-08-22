@@ -42,7 +42,6 @@ function NotesClient({initialNotes,  initialTag}: Props) {
   }
 
   const closeModal = () => setIsModalOpen(false);
-  const openModal = () => setIsModalOpen(true);
 
   return (
     <>
@@ -69,7 +68,7 @@ function NotesClient({initialNotes,  initialTag}: Props) {
         )}
         {isModalOpen && (
           <Modal onClose={closeModal}>
-            <NoteForm onClose={closeModal} />
+            <NoteForm />
           </Modal>
         )}
         </div>
