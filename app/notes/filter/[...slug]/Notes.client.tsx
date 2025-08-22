@@ -11,6 +11,7 @@ import Modal from '@/components/Modal/Modal'
 import NoteForm from '@/components/NoteForm/NoteForm'
 import { useDebounce } from 'use-debounce'
 import 'modern-normalize/modern-normalize.css';
+import Link from 'next/link'
 
 type Props = {
   initialNotes: FetchNotesResponse;
@@ -56,8 +57,7 @@ function NotesClient({initialNotes,  initialTag}: Props) {
                 currentPage={page - 1}
               />
             )}
-
-          <button onClick={openModal} className={css.button}>Create note +</button>
+          <Link href='/notes/action/create' className={css.button}>Create note +</Link>
         </header>
         
         {data && data.notes && data.notes.length > 0 ? (
