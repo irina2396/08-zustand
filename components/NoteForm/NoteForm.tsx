@@ -48,7 +48,7 @@ export default function NoteForm() {
         <form className={css.form} onSubmit={handleSubmit}>
             <div className={css.formGroup}>
                 <label htmlFor="title">Title</label>
-                    <input id="title" name="title" type="text" className={css.input} defaultValue={draft?.title} onChange={handleChange} required/>
+                    <input id="title" name="title" type="text" className={css.input} value={draft?.title} onChange={handleChange} required/>
             </div>
 
             <div className={css.formGroup}>
@@ -58,7 +58,7 @@ export default function NoteForm() {
                         name="content"
                         rows={8}
                         className={css.textarea}
-                        defaultValue={draft?.content}
+                        value={draft?.content}
                         onChange={handleChange}
                         required
                     />

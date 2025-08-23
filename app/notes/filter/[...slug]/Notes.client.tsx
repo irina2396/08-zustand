@@ -7,8 +7,6 @@ import { useState } from 'react'
 import SearchBox from '@/components/SearchBox/SearchBox'
 import NoteList from '@/components/NoteList/NoteList'
 import Pagination from '@/components/Pagination/Pagination'
-import Modal from '@/components/Modal/Modal'
-import NoteForm from '@/components/NoteForm/NoteForm'
 import { useDebounce } from 'use-debounce'
 import 'modern-normalize/modern-normalize.css';
 import Link from 'next/link'
@@ -21,7 +19,6 @@ type Props = {
 function NotesClient({initialNotes,  initialTag}: Props) {
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState('');
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [debouncedSearch] = useDebounce(search, 500);
 
   const { data, isLoading } = useQuery({
@@ -40,8 +37,6 @@ function NotesClient({initialNotes,  initialTag}: Props) {
   const handlePage = ( newPage: number ) => {
     setPage(newPage);
   }
-
-  const closeModal = () => setIsModalOpen(false);
 
   return (
     <>
@@ -65,11 +60,6 @@ function NotesClient({initialNotes,  initialTag}: Props) {
           </>
         ) : (
           !isLoading && <div className={css.noNotes}>No notes found</div>  
-        )}
-        {isModalOpen && (
-          <Modal onClose={closeModal}>
-            <NoteForm />
-          </Modal>
         )}
         </div>
     </>
